@@ -3,13 +3,19 @@ import pandas as pd
 import yaml
 import os
 
+def get_project_root():
+    return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 def load_config(config_path="config/params.yaml"):
-    with open(config_path, "r") as f:
+    root = get_project_root()
+    full_path = os.path.join(root, config_path)
+    with open(full_path, "r") as f:
         return yaml.safe_load(f)
 
 def predict_example():
     config = load_config()
-    model_path = config['paths']['model_save']
+    root = get_project_root()
+    model_path = os.path.join(root, config['paths']['model_save'])
     
     if not os.path.exists(model_path):
         print(f"Error: El modelo no se encuentra en la ruta {model_path}. Por favor ejecuta el pipeline de entrenamiento primero (python -m src.main).")

@@ -1,4 +1,6 @@
 import pandas as pd
+import os
+import sys
 from sklearn.model_selection import train_test_split
 
 def load_and_preprocess_data(config):
@@ -8,7 +10,16 @@ def load_and_preprocess_data(config):
     divide en datos de entrenamiento y prueba.
     """
     # 1. Cargar datos
-    data_path = config['paths']['data_raw']
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    data_path = os.path.join(root, config['paths']['data_raw'])
+    
+    if not os.path.exists(data_path):
+        print(f"\n[ERROR CRÍTICO] El dataset no se encuentra en la ruta: {data_path}")
+        print("Para que el proyecto funcione, debes descargar el archivo 'WA_Fn-UseC_-Telco-Customer-Churn.csv'")
+        print("desde Kaggle y colocarlo en la carpeta 'data/raw/'.")
+        print("Alternativamente, el repositorio ahora debería incluirlo directamente en Git.")
+        sys.exit(1)
+        
     df = pd.read_csv(data_path)
     
     # 2. Limpiar TotalCharges

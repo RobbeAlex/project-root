@@ -17,13 +17,19 @@ app = FastAPI(
 class CustomerData(BaseModel):
     data: dict
 
+def get_project_root():
+    return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 def load_config():
-    with open("config/params.yaml", "r") as f:
+    root = get_project_root()
+    full_path = os.path.join(root, "config/params.yaml")
+    with open(full_path, "r") as f:
         return yaml.safe_load(f)
 
 # Cargar el modelo globalmente
 config = load_config()
-model_path = config['paths']['model_save']
+root = get_project_root()
+model_path = os.path.join(root, config['paths']['model_save'])
 model = None
 
 if os.path.exists(model_path):
