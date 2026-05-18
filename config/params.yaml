@@ -1,9 +1,0 @@
-data:
-  test_size: 0.2
-  random_state: 42
-model:
-  name: "LogisticRegression"
-  max_iter: 1000
-paths:
-  model_save: "models/model.pkl"
-  data_raw: "data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv"
