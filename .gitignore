@@ -206,3 +206,11 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 project-root/
+
+# Data and Models
+data/*
+!data/.gitkeep
+!data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv
+models/*
+!models/.gitkeep
+*.csv

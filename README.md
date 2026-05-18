@@ -30,6 +30,32 @@ Se utiliza el dataset público **Telco Customer Churn**.
 
 ---
 
+## 📂 Estructura de Carpetas
+
+```text
+churn-mlops-project/
+├── config/
+│   └── params.yaml          # Configuración centralizada
+├── data/
+│   ├── raw/                 # WA_Fn-UseC_-Telco-Customer-Churn.csv (NO SUBIR)
+│   └── processed/           # (Opcional) Datos limpios
+├── src/
+│   ├── __init__.py
+│   ├── data_loader.py       # Rol: Data Engineer
+│   ├── model_trainer.py     # Rol: ML Engineer
+│   ├── main.py              # Rol: MLOps Engineer
+│   └── predict.py           # Rol: QA Engineer
+├── tests/
+│   ├── __init__.py
+│   └── test_pipeline.py     # Rol: QA Engineer
+├── models/                  # Modelos .pkl generados (NO SUBIR o subir solo el final)
+├── requirements.txt         # Dependencias
+├── .gitignore               # Reglas de exclusión
+└── README.md                # Este archivo
+```
+
+---
+
 ## ⚙️ ¿Cómo lo instalo?
 
 1. **Clonar el repositorio:**
