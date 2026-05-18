@@ -62,6 +62,33 @@ uvicorn src.api:app --reload
 ```
 Una vez iniciado, puedes hacer un POST a `http://127.0.0.1:8000/predict` con los datos del cliente en JSON.
 
+## 🐳 ¿Cómo lo ejecuto con Docker? (Replicabilidad)
+
+Para garantizar que el entorno sea idéntico en cualquier computadora, puedes usar **Docker**. Asegúrate de tener el dataset en `data/raw/` antes de construir la imagen.
+
+1. **Construir la Imagen de Docker:**
+   ```bash
+   docker build -t churn-mlops-app .
+   ```
+
+2. **Entrenar el Modelo usando Docker:**
+   Si deseas correr el pipeline de entrenamiento completo de forma aislada:
+   ```bash
+   docker run --rm churn-mlops-app python -m src.main
+   ```
+
+3. **Ejecutar Pruebas (Test Pipeline) con Docker:**
+   ```bash
+   docker run --rm churn-mlops-app pytest test/
+   ```
+
+4. **Lanzar la API usando Docker:**
+   Levanta el contenedor exponiendo el puerto 8000:
+   ```bash
+   docker run -p 8000:8000 churn-mlops-app
+   ```
+   *La API estará disponible en `http://localhost:8000` y puedes realizar predicciones con `POST /predict`.*
+
 ## 🏆 Resultados del Modelo
 *(Al ejecutar el pipeline base con RandomForest, se obtendrán las siguientes métricas aproximadas)*
 - **Accuracy (Precisión Global):** ~ 79.5%
