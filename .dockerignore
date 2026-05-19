@@ -1,9 +1,16 @@
 .git
 .gitignore
 venv
+.venv
 env
 __pycache__
 *.pyc
 .pytest_cache
 .coverage
 htmlcov
+
+# Evita clonar basura o credenciales en la imagen
+.env
+kaggle.json
+data/
+models/

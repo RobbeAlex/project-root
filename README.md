@@ -60,7 +60,25 @@ churn-mlops-project/
 
 ---
 
-## ⚙️ ¿Cómo lo instalo?
+## ⚙️ Configuración Inicial (Credenciales de Kaggle)
+Para garantizar la reproducibilidad y permitir que el sistema descargue los datos de forma automática, debes configurar tus credenciales de Kaggle:
+
+* Ve a tu perfil de Kaggle -> Settings -> API y haz clic en Create New Token para descargar tu archivo kaggle.json.
+
+* En la raíz del proyecto, crea un archivo llamado .env (este archivo está protegido por .gitignore).
+
+* Abre tu kaggle.json, copia tus datos y colócalos en el archivo .env con el siguiente formato:
+
+```bash
+KAGGLE_USERNAME=tu_usuario_de_kaggle
+KAGGLE_KEY=tu_token_largo_alfanumerico
+```
+
+---
+
+## 🚀 ¿Cómo lo ejecuto?
+
+## 🏠 Opcion A: "Tradicional" (Entorno Virtual)
 
 1. **Clonar el repositorio:**
    ```bash
@@ -82,43 +100,32 @@ churn-mlops-project/
    pip install -r requirements.txt
    ```
 
-4. **Obtener el Dataset:**
-   El pipeline descargará automáticamente el dataset utilizando la API de Kaggle. Para que esto funcione, debes tener configurado tu archivo de credenciales `kaggle.json` en la ruta correspondiente de tu sistema (por ejemplo, `~/.kaggle/kaggle.json` en Linux/Mac o `%USERPROFILE%\.kaggle\kaggle.json` en Windows).
+4. **Entrenar el Modelo (Pipeline MLOps):**
+   El script detectará que no tienes los datos y los descargará automáticamente usando las credenciales del .env:
 
----
-
-## 🚀 ¿Cómo lo ejecuto?
-
-## 🏠 Opcion A: "Tradicional" (Entorno Virtual)
-
-### 1. Entrenar el Modelo (Pipeline MLOps)
-Ejecuta el script principal para procesar los datos, entrenar y guardar el modelo en la carpeta `models/`:
 ```bash
 python -m src.main
 ```
 
-### 2. Probar Predicción Local (QA)
-Para validar que el modelo guardado funciona, puedes ejecutar el script de predicción que evalúa a un cliente ficticio:
+5. **Probar Predicción Local y Tests:**
+
 ```bash
 python -m src.predict
-```
-
-### 3. Ejecutar Pruebas (Test Pipeline)
-Verifica la integridad del pipeline usando `pytest`:
-```bash
 pytest test/
 ```
 
-### 4. Lanzar la API (Opcional)
-Inicia el servidor local con FastAPI:
+6. **Lanzar la API:**
+
 ```bash
 uvicorn src.api:app --reload
 ```
 Una vez iniciado, puedes hacer un POST a `http://127.0.0.1:8000/predict` con los datos del cliente en JSON.
 
-## 🐳 Opcion B: "Dockerizada" 
+---
 
-Para garantizar que el entorno sea idéntico en cualquier computadora, puedes usar **Docker**. Asegúrate de tener el dataset en `data/raw/` antes de construir la imagen.
+## 🐳 Opcion B: "Dockerizada" (Aislamiento Total)
+
+Docker permite correr todo el ecosistema sin instalar Python en tu máquina local. Al usar --env-file .env, compartimos de forma segura las credenciales de Kaggle con el contenedor en tiempo de ejecución.
 
 1. **Construir la Imagen de Docker:**
    ```bash
@@ -126,20 +133,18 @@ Para garantizar que el entorno sea idéntico en cualquier computadora, puedes us
    ```
 
 2. **Entrenar el Modelo usando Docker:**
-   Si deseas correr el pipeline de entrenamiento completo de forma aislada:
    ```bash
-   docker run --rm churn-mlops-app python -m src.main
+   docker run --rm --env-file .env churn-mlops-app python -m src.main
    ```
 
 3. **Ejecutar Pruebas (Test Pipeline) con Docker:**
    ```bash
-   docker run --rm churn-mlops-app pytest test/
+   docker run --rm --env-file .env churn-mlops-app pytest test/
    ```
 
 4. **Lanzar la API usando Docker:**
-   Levanta el contenedor exponiendo el puerto 8000:
    ```bash
-   docker run -p 8000:8000 churn-mlops-app
+   docker run --rm -p 8000:8000 --env-file .env churn-mlops-app
    ```
    *La API estará disponible en `http://localhost:8000` y puedes realizar predicciones con `POST /predict`.*
 
