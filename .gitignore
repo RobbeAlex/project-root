@@ -214,5 +214,6 @@ data/*
 !data/.gitkeep
 !data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv
 models/*
+models/*.pkl
 !models/.gitkeep
 
