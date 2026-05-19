@@ -209,6 +209,7 @@ project-root/
 
 # Data and Models
 *.csv
+*.pkl
 data/*
 !data/.gitkeep
 !data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv
