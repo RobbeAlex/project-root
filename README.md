@@ -134,7 +134,7 @@ Docker permite correr todo el ecosistema sin instalar Python en tu máquina loca
 
 2. **Entrenar el Modelo usando Docker:**
    ```bash
-   docker run --rm --env-file .env churn-mlops-app python -m src.main
+  docker run --rm --env-file .env -v "${PWD}/models:/app/models" -v "${PWD}/data:/app/data" churn-mlops-app python -m src.main
    ```
 
 3. **Ejecutar Pruebas (Test Pipeline) con Docker:**
@@ -144,7 +144,7 @@ Docker permite correr todo el ecosistema sin instalar Python en tu máquina loca
 
 4. **Lanzar la API usando Docker:**
    ```bash
-   docker run --rm -p 8000:8000 --env-file .env churn-mlops-app
+   docker run --rm -p 8000:8000 --env-file .env -v "${PWD}/models:/app/models" churn-mlops-app
    ```
    *La API estará disponible en `http://localhost:8000` y puedes realizar predicciones con `POST /predict`.*
 
