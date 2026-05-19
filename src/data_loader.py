@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 import sys
+import kaggle
 from sklearn.model_selection import train_test_split
 
 def load_and_preprocess_data(config):
@@ -9,11 +10,21 @@ def load_and_preprocess_data(config):
     data_path = os.path.join(root, config['paths']['data_raw'])
     
     if not os.path.exists(data_path):
-        print(f"\n[ERROR CRÍTICO] El dataset no se encuentra en la ruta: {data_path}")
-        print("Para que el proyecto funcione, debes descargar el archivo 'WA_Fn-UseC_-Telco-Customer-Churn.csv'")
-        print("desde Kaggle y colocarlo en la carpeta 'data/raw/'.")
-        print("Alternativamente, el repositorio ahora debería incluirlo directamente en Git.")
-        sys.exit(1)
+        print(f"\n[INFO] El dataset no se encuentra en la ruta: {data_path}")
+        print("[INFO] Intentando descargar automáticamente usando la API de Kaggle...")
+        try:
+            kaggle.api.authenticate()
+            dataset_name = 'blastchar/telco-customer-churn'
+            download_path = os.path.dirname(data_path)
+            kaggle.api.dataset_download_files(dataset_name, path=download_path, unzip=True)
+            print("[INFO] Dataset descargado y descomprimido exitosamente.")
+        except Exception as e:
+            print(f"\n[ERROR CRÍTICO] Falló la descarga automática: {e}")
+            print("Para que el proyecto funcione, debes configurar tus credenciales de Kaggle (kaggle.json).")
+            print("O bien, puedes descargar el archivo 'WA_Fn-UseC_-Telco-Customer-Churn.csv' manualmente")
+            print("desde Kaggle: https://www.kaggle.com/datasets/blastchar/telco-customer-churn")
+            print("y colocarlo en la carpeta 'data/raw/'.")
+            sys.exit(1)
         
     df = pd.read_csv(data_path)
     

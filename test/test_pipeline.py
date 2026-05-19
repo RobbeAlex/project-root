@@ -18,11 +18,9 @@ def test_load_and_preprocess_data():
     config = load_config()
     root = get_project_root()
     
-    # Validación de que el csv exista
-    data_path = os.path.join(root, config['paths']['data_raw'])
-    assert os.path.exists(data_path), "El archivo CSV no existe en la ruta especificada."
-    
+    # load_and_preprocess_data se encargará de validar la existencia o descargar el dataset
     X_train, X_test, y_train, y_test = load_and_preprocess_data(config)
+
     
     # Verificacion de que los datos no esten vacios
     assert not X_train.empty, "X_train está vacío"

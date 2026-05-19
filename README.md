@@ -48,7 +48,7 @@ churn-mlops-project/
 ├── tests/
 │   ├── __init__.py
 │   └── test_pipeline.py     # Rol: QA Engineer
-├── models/                  # Modelos .pkl generados (NO SUBIR o subir solo el final)
+├── models/                  # Modelos .pkl generados (Ignorados por git, generar localmente)
 ├── requirements.txt         # Dependencias
 ├── .gitignore               # Reglas de exclusión
 ├── .dockerignore            # Reglas de exclusión de Docker
@@ -82,8 +82,8 @@ churn-mlops-project/
    pip install -r requirements.txt
    ```
 
-4. **Añadir el Dataset:**
-   Descarga el archivo `WA_Fn-UseC_-Telco-Customer-Churn.csv` desde Kaggle y colócalo dentro de la carpeta `data/raw/`.
+4. **Obtener el Dataset:**
+   El pipeline descargará automáticamente el dataset utilizando la API de Kaggle. Para que esto funcione, debes tener configurado tu archivo de credenciales `kaggle.json` en la ruta correspondiente de tu sistema (por ejemplo, `~/.kaggle/kaggle.json` en Linux/Mac o `%USERPROFILE%\.kaggle\kaggle.json` en Windows).
 
 ---
 
