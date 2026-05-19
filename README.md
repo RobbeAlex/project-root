@@ -14,12 +14,12 @@ El objetivo principal es entrenar y consumir un modelo predictivo capaz de ident
 ---
 
 ## 👥 Roles y Responsabilidades
-Este proyecto fue desarrollado bajo un entorno simulado de trabajo colaborativo, donde cada miembro del equipo asumió un rol específico con responsabilidades y contratos de interfaz claros:
+El proyecto fue desarrollado simulando la dinámica de un equipo especializado colaborativo:
 
-- **Data Engineer:** Responsable de `src/data_loader.py`. Encargado de la ingesta de datos, limpieza de valores nulos (ej. `TotalCharges`), eliminación de columnas innecesarias, codificación de variables categóricas y particionamiento del dataset.
-- **ML Engineer:** Responsable de `src/trainer_model.py`. Encargado de implementar la fábrica de modelos, entrenar el algoritmo seleccionado desde configuración, evaluar métricas (Accuracy, Recall, F1) y serializar el modelo en `models/`.
-- **MLOps Engineer:** Responsable de `src/main.py` y `config/params.yaml`. Orquestador del pipeline, encargado de conectar la salida del Data Engineer con la entrada del ML Engineer y garantizar que el pipeline se ejecute sin errores.
-- **QA & Production Engineer:** Responsable de `src/predict.py`, `src/api.py` y `test/test_pipeline.py`. Encargado de escribir pruebas unitarias robustas para garantizar la calidad del código y de implementar el script y API para predicciones.
+- **Data Engineer:** Responsable de `src/data_loader.py`, incluyendo verificación/descarga del dataset de Kaggle, imputación de `TotalCharges`, codificación de variables y división en entrenamiento/prueba.
+- **ML Engineer:** A cargo de `src/trainer_model.py`, gestionando la selección del modelo (`RandomForest` o `LogisticRegression`), el entrenamiento, el cálculo de métricas (Accuracy, Recall, F1) y el guardado del artefacto en `models/model.pkl`.
+- **MLOps Engineer:** Responsable de `src/main.py` y `config/params.yaml`, orquestando la ejecución end-to-end del pipeline, parámetros de datos/modelo y rutas del proyecto.
+- **QA & Production Engineer:** Encargado de `test/test_pipeline.py`, `src/predict.py` y `src/api.py`, validando el pipeline con pruebas, habilitando inferencia local y exponiendo el modelo vía FastAPI para predicciones en tiempo real.
 
 ---
 
