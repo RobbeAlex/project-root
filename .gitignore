@@ -208,9 +208,10 @@ __marimo__/
 project-root/
 
 # Data and Models
+*.csv
 data/*
 !data/.gitkeep
 !data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv
 models/*
 !models/.gitkeep
-*.csv
+

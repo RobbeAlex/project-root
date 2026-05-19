@@ -188,9 +188,10 @@ curl -X POST "http://127.0.0.1:8000/predict" \
 **Salida esperada:**
 ```json
 {
-  "prediction": 1,
-  "label": "Churn",
-  "probability": 0.73
+  "churn_prediction": 1,
+  "status": "Churn",
+  "probability_churn": 0.73,
+  "probability_no_churn": 0.27
 }
 ```
 
