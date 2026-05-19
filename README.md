@@ -51,6 +51,10 @@ churn-mlops-project/
 ├── models/                  # Modelos .pkl generados (NO SUBIR o subir solo el final)
 ├── requirements.txt         # Dependencias
 ├── .gitignore               # Reglas de exclusión
+├── .dockerignore            # Reglas de exclusión de Docker
+├── Dockerfile               # lista secuencial de comandos e instrucciones para construir una imagen de Docker
+├── DATASET.md               # Información del dataset
+├── ETHICS.md                # Define los principios eticos
 └── README.md                # Este archivo
 ```
 
