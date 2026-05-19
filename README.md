@@ -81,26 +81,26 @@ KAGGLE_KEY=tu_token_largo_alfanumerico
 ### 🏠 Opción A: "Tradicional" (Entorno Virtual)
 
 1. **Clonar el repositorio:**
-   ```bash
-   git clone https://github.com/RobbeAlex/project-root.git
-   cd churn-mlops-project
-   ```
+```bash
+git clone https://github.com/RobbeAlex/project-root.git
+cd churn-mlops-project
+```
 
 2. **Crear y activar un entorno virtual:**
-   ```bash
-   python -m venv venv
-   # En Windows:
-   venv\Scripts\activate
-   # En Linux/Mac:
-   source venv/bin/activate
-   ```
+```bash
+python -m venv venv
+# En Windows:
+venv\Scripts\activate
+# En Linux/Mac:
+source venv/bin/activate
+```
 
 3. **Instalar dependencias:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-4. **Entrenar el Modelo (Pipeline MLOps):**
+4. **Entrenar el Modelo (Pipeline MLOps):**  
    El script detectará que no tienes los datos y los descargará automáticamente usando las credenciales del .env:
 
 ```bash
@@ -127,26 +127,26 @@ Una vez iniciado, puedes hacer un POST a `http://127.0.0.1:8000/predict` con los
 
 Docker permite correr todo el ecosistema sin instalar Python en tu máquina local. Al usar --env-file .env, compartimos de forma segura las credenciales de Kaggle con el contenedor en tiempo de ejecución.
 
-1. **Construir la Imagen de Docker:**
-   ```bash
-   docker build -t churn-mlops-app .
-   ```
+1. **Construir la Imagen de Docker:**  
+```bash
+docker build -t churn-mlops-app .
+```
 
 2. **Entrenar el Modelo usando Docker:**
-   ```bash
-  docker run --rm --env-file .env -v "${PWD}/models:/app/models" -v "${PWD}/data:/app/data" churn-mlops-app python -m src.main
-   ```
+```bash
+docker run --rm --env-file .env -v "${PWD}/models:/app/models" -v "${PWD}/data:/app/data" churn-mlops-app python -m src.main
+```
 
 3. **Ejecutar Pruebas (Test Pipeline) con Docker:**
-   ```bash
-   docker run --rm --env-file .env churn-mlops-app pytest test/
-   ```
+```bash
+docker run --rm --env-file .env churn-mlops-app pytest test/
+```
 
-4. **Lanzar la API usando Docker:**
-   ```bash
-   docker run --rm -p 8000:8000 --env-file .env -v "${PWD}/models:/app/models" churn-mlops-app
-   ```
-   *La API estará disponible en `http://localhost:8000` y puedes realizar predicciones con `POST /predict`.*
+4. **Lanzar la API usando Docker:**  
+```bash
+docker run --rm -p 8000:8000 --env-file .env -v "${PWD}/models:/app/models" churn-mlops-app
+```
+*La API estará disponible en `http://localhost:8000` y puedes realizar predicciones con `POST /predict`.*
 
 ---
 
