@@ -2,7 +2,10 @@ import yaml
 import os
 from src.data_loader import load_and_preprocess_data
 from kaggle.api.kaggle_api_extended import KaggleApi
+from dotenv import load_dotenv
 from src.trainer_model import train_and_save_model
+
+load_dotenv()
 
 def get_project_root():
     return os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
