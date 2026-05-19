@@ -204,9 +204,9 @@ curl -X POST "http://127.0.0.1:8000/predict" \
 
 ## 🤖 Contribución de LLM (Inteligencia Artificial)
 
-Se utilizaron modelos de lenguaje grandes (LLMs) como asistencia técnica para agilizar el desarrollo y la depuración del código:
+Durante el desarrollo del proyecto utilicé modelos de lenguaje grandes (LLMs) como apoyo técnico para agilizar la implementación y resolver aspectos específicos del pipeline:
 
-- **Data Engineer:** Utilizó **Gemini** para optimizar la lógica de preprocesamiento, como la limpieza de espacios en blanco y la conversión a numérico en la columna `TotalCharges`.
-- **ML Engineer:** Utilizó **Gemini** para estructurar la extracción del cálculo de métricas de desempeño y para revisar el proceso de guardado de los modelos utilizando `joblib`.
-- **MLOps Engineer:** Utilizó **ChatGPT / Gemini** para la resolución de conflictos relacionados con rutas de archivos absolutas vs relativas (`os.path`) y para generar plantillas estructurales para `dvc.yaml`.
-- **QA & Production Engineer:** Utilizó **Gemini** para bosquejar la estructura inicial de `pytest` (asserts y fixtures) y sugerir la lógica de captura de excepciones en FastAPI para la respuesta de la red en `predict.py`.
+- **Data Engineer:** Utilicé **Gemini** para optimizar la lógica de preprocesamiento, especialmente en la limpieza de espacios en blanco y la conversión a numérico de la columna `TotalCharges`.
+- **ML Engineer:** Utilicé **Gemini** para estructurar el cálculo de métricas de desempeño y revisar el proceso de guardado de los modelos con `joblib`.
+- **MLOps Engineer:** Utilicé **ChatGPT / Gemini** para resolver conflictos relacionados con rutas absolutas y relativas (`os.path`) y para apoyar la organización de la estructura general del proyecto.
+- **QA & Production Engineer:** Utilicé **Gemini** para definir la estructura inicial de `pytest` y sugerir la lógica de manejo de excepciones en FastAPI para `predict.py`.
