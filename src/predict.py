@@ -31,10 +31,10 @@ def predict_example():
     
     if hasattr(model, 'feature_names_in_'):
         features = model.feature_names_in_
-        # Creamos un cliente con valores base (0) para todas las features
+        # Se crea cliente de ejemplo con valores base en (0)
         example_data = pd.DataFrame(0, index=[0], columns=features)
         
-        # Asignamos valores representativos a algunas columnas clave
+        # Se asignan valores representativos a algunas columnas para el cliente de prueba
         if 'tenure' in features:
             example_data['tenure'] = 24
         if 'MonthlyCharges' in features:
@@ -48,7 +48,7 @@ def predict_example():
             
         prediction = model.predict(example_data)
         
-        # Modelos como LogisticRegression y RandomForest soportan predict_proba
+        # Se saca el porcentaje de churn
         if hasattr(model, "predict_proba"):
             prob = model.predict_proba(example_data)
             prob_str = f"(Probabilidad Churn: {prob[0][1]:.2%})"

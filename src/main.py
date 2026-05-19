@@ -15,16 +15,16 @@ def load_config(config_path="config/params.yaml"):
 def main():
     print("Iniciando Pipeline de MLOps para Predicción de Churn...")
     
-    # 1. Cargar configuración
+    # Cargar configuración
     config = load_config()
     print("Configuración cargada correctamente.")
     
-    # 2. Cargar y preprocesar datos
+    # Cargar y preprocesar datos
     print("Cargando y preprocesando datos...")
     X_train, X_test, y_train, y_test = load_and_preprocess_data(config)
     print(f"Datos divididos: {len(X_train)} train, {len(X_test)} test")
     
-    # 3. Entrenar y guardar modelo
+    # Entrenar y guardar modelo
     print("Entrenando modelo...")
     metrics = train_and_save_model(X_train, y_train, X_test, y_test, config)
     

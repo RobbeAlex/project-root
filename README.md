@@ -1,7 +1,7 @@
 # Proyecto MLOps: Predicción de Churn en Telecomunicaciones
 ![Python](https://img.shields.io/badge/Python-3.9+-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.136-green)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-1.4.2-orange)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-1.8.0-orange)
 ![Docker](https://img.shields.io/badge/Docker-ready-blue)
 
 Este proyecto implementa un pipeline completo de Machine Learning (MLOps) diseñado para predecir la probabilidad de que un cliente abandone los servicios de una empresa de telecomunicaciones (Churn). La arquitectura es modular, reproducible y está lista para colaboración o despliegue en producción.
@@ -159,29 +159,25 @@ Con la API levantada, puedes enviar una petición HTTP para predecir si un clien
 curl -X POST "http://127.0.0.1:8000/predict" \
      -H "Content-Type: application/json" \
      -d '{
-           "data": {
-             "tenure": 12,
-             "MonthlyCharges": 95.50,
-             "TotalCharges": 1146.0,
-             "InternetService_Fiber optic": 1,
-             "Contract_Month-to-month": 1,
-             "PaymentMethod_Electronic check": 1
-           }
+           "tenure": 12,
+           "MonthlyCharges": 95.50,
+           "TotalCharges": 1146.0,
+           "InternetService_Fiber optic": 1,
+           "Contract_Month-to-month": 1,
+           "PaymentMethod_Electronic check": 1
          }'
 ```
 
 **Petición (`json`):**
-```bash
+```json
 {
-  "data": {
-    "tenure": 12,
-    "MonthlyCharges": 95.50,
-    "TotalCharges": 1146.0,
-    "InternetService_Fiber optic": 1,
-    "Contract_Month-to-month": 1,
-    "PaymentMethod_Electronic check": 1,
-    "PaperlessBilling_Yes": 1
-  }
+  "tenure": 12,
+  "MonthlyCharges": 95.50,
+  "TotalCharges": 1146.0,
+  "InternetService_Fiber optic": 1,
+  "Contract_Month-to-month": 1,
+  "PaymentMethod_Electronic check": 1,
+  "PaperlessBilling_Yes": 1
 }
 ```
 
