@@ -14,12 +14,12 @@ El objetivo principal es entrenar y consumir un modelo predictivo capaz de ident
 ---
 
 ## 👥 Roles y Responsabilidades
-Este proyecto fue desarrollado bajo un entorno simulado de trabajo colaborativo, donde cada miembro del equipo asumió un rol específico con responsabilidades y contratos de interfaz claros:
+Este proyecto fue desarrollado bajo un entorno simulado de trabajo colaborativo, con el propósito de representar la distribución de funciones que normalmente se presenta en un equipo orientado a la implementación de soluciones de Machine Learning y MLOps. En este contexto, cada integrante asumió un rol específico con responsabilidades delimitadas y una clara relación con los componentes del sistema:
 
-- **Data Engineer:** Responsable de `src/data_loader.py`. Encargado de la ingesta de datos, limpieza de valores nulos (ej. `TotalCharges`), eliminación de columnas innecesarias, codificación de variables categóricas y particionamiento del dataset.
-- **ML Engineer:** Responsable de `src/trainer_model.py`. Encargado de implementar la fábrica de modelos, entrenar el algoritmo seleccionado desde configuración, evaluar métricas (Accuracy, Recall, F1) y serializar el modelo en `models/`.
-- **MLOps Engineer:** Responsable de `src/main.py` y `config/params.yaml`. Orquestador del pipeline, encargado de conectar la salida del Data Engineer con la entrada del ML Engineer y garantizar que el pipeline se ejecute sin errores.
-- **QA & Production Engineer:** Responsable de `src/predict.py`, `src/api.py` y `test/test_pipeline.py`. Encargado de escribir pruebas unitarias robustas para garantizar la calidad del código y de implementar el script y API para predicciones.
+* **Data Engineer:** Responsable de `src/data_loader.py`. Se encargó de la ingesta de datos, la depuración de valores nulos, la eliminación de atributos innecesarios, la codificación de variables categóricas y la partición del conjunto de datos para su posterior procesamiento.
+* **ML Engineer:** Responsable de `src/trainer_model.py`. Su función consistió en implementar la lógica de entrenamiento, seleccionar el algoritmo definido en la configuración, evaluar el desempeño mediante métricas como Accuracy, Recall y F1, y serializar el modelo final en el directorio `models/`.
+* **MLOps Engineer:** Responsable de `src/main.py` y `config/params.yaml`. Se ocupó de la orquestación del pipeline, la administración de parámetros de ejecución y la integración entre las distintas etapas del flujo de trabajo, con el fin de asegurar su reproducibilidad y correcta ejecución.
+* **QA & Production Engineer:** Responsable de `src/predict.py`, `src/api.py` y `test/test_pipeline.py`. Su labor estuvo orientada a la validación funcional mediante pruebas automatizadas, así como al desarrollo de la interfaz de inferencia para el consumo del modelo en un entorno de producción.
 
 ---
 
