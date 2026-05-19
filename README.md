@@ -42,19 +42,19 @@ churn-mlops-project/
 ├── src/
 │   ├── __init__.py
 │   ├── data_loader.py       # Rol: Data Engineer
-│   ├── model_trainer.py     # Rol: ML Engineer
+│   ├── trainer_model.py     # Rol: ML Engineer
 │   ├── main.py              # Rol: MLOps Engineer
 │   └── predict.py           # Rol: QA Engineer
-├── tests/
+├── test/
 │   ├── __init__.py
 │   └── test_pipeline.py     # Rol: QA Engineer
 ├── models/                  # Modelos .pkl generados (Ignorados por git, generar localmente)
 ├── requirements.txt         # Dependencias
 ├── .gitignore               # Reglas de exclusión
 ├── .dockerignore            # Reglas de exclusión de Docker
-├── Dockerfile               # lista secuencial de comandos e instrucciones para construir una imagen de Docker
+├── Dockerfile               # Lista secuencial de comandos e instrucciones para construir una imagen de Docker
 ├── DATASET.md               # Información del dataset
-├── ETHICS.md                # Define los principios eticos
+├── ETHICS.md                # Define los principios éticos
 └── README.md                # Este archivo
 ```
 
@@ -78,7 +78,7 @@ KAGGLE_KEY=tu_token_largo_alfanumerico
 
 ## 🚀 ¿Cómo lo ejecuto?
 
-## 🏠 Opcion A: "Tradicional" (Entorno Virtual)
+### 🏠 Opción A: "Tradicional" (Entorno Virtual)
 
 1. **Clonar el repositorio:**
    ```bash
@@ -123,7 +123,7 @@ Una vez iniciado, puedes hacer un POST a `http://127.0.0.1:8000/predict` con los
 
 ---
 
-## 🐳 Opcion B: "Dockerizada" (Aislamiento Total)
+### 🐳 Opción B: "Dockerizada" (Aislamiento Total)
 
 Docker permite correr todo el ecosistema sin instalar Python en tu máquina local. Al usar --env-file .env, compartimos de forma segura las credenciales de Kaggle con el contenedor en tiempo de ejecución.
 
@@ -160,7 +160,7 @@ Docker permite correr todo el ecosistema sin instalar Python en tu máquina loca
 
 ---
 
-## Ejemplos rápido de Inferencia (Uso)
+## Ejemplos rápidos de inferencia (Uso)
 Con la API levantada, puedes enviar una petición HTTP para predecir si un cliente hará Churn o no.
 
 **Petición (`curl`):**
