@@ -37,7 +37,7 @@ churn-mlops-project/
 ├── config/
 │   └── params.yaml          # Configuración centralizada
 ├── data/
-│   ├── raw/                 # WA_Fn-UseC_-Telco-Customer-Churn.csv (NO SUBIR)
+│   ├── raw/                 # Datos sin procesar
 │   └── processed/           # (Opcional) Datos limpios
 ├── src/
 │   ├── __init__.py
